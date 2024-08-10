@@ -46,3 +46,7 @@ artifacts:
     paths: ['docker/*.tar']
 
 timeout: '1200s'
+
+options:
+  logging: GCS_ONLY
+logsBucket: gs://hello-telus-logs
