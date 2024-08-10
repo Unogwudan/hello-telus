@@ -1,22 +1,3 @@
-#apiVersion: apps/v1
-#kind: Deployment
-#metadata:
-#  name: hello-telus
-#spec:
-#  replicas: 1
-#  selector:
-#    matchLabels:
-#      app: hello-telus
-#  template:
-#    metadata:
-#      labels:
-#        app: hello-telus
-#    spec:
-#      containers:
-#        - name: hello-telus
-#          image: gcr.io/unogwudan-test/hello-telus:$SHORT_SHA
-#          ports:
-#            - containerPort: 8080
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -37,8 +18,6 @@ spec:
           ports:
             - containerPort: 8080
           env:
-            - name: PUBSUB_CREDENTIALS
-              value: /var/secrets/google/pubsub-service-account.json
             - name: GOOGLE_CLOUD_PUBSUB_CREDENTIALS
               value: /var/secrets/google/pubsub-service-account.json
           volumeMounts:

@@ -12,7 +12,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/${_PROJECT_ID}/hello-telus:${_SHORT_SHA}']
 
-  # Step 4: Set up kubectl to authenticate with your GKE cluster
+  # Step 4: Set up kubectl to authenticate with the GKE cluster
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'sh'
     args:
@@ -23,19 +23,11 @@ steps:
         gcloud config set container/cluster ${_CLUSTER_NAME}
         gcloud container clusters get-credentials ${_CLUSTER_NAME} --region ${_CLUSTER_REGION} --project ${_PROJECT_ID}
 
-#  # Step 4: Set up kubectl to authenticate with your GKE cluster
-#  - name: 'gcr.io/cloud-builders/gcloud'
-#    args:
-#      [
-#        'container', 'clusters', 'get-credentials', '${_CLUSTER_NAME}',
-#        '--region', '${_CLUSTER_REGION}', '--project', '${_PROJECT_ID}'
-#      ]
-
   # Step 5: Apply the deployment and service configuration
   - name: 'gcr.io/cloud-builders/kubectl'
     args: ['apply', '-f', 'k8s/deployment.yaml']
 
-  # Optional: Update the deployment image (if using imagePullPolicy: Always)
+  # Update the deployment image (if using imagePullPolicy: Always)
   - name: 'gcr.io/cloud-builders/kubectl'
     args:
       [
@@ -51,11 +43,6 @@ substitutions:
 
 images:
   - 'gcr.io/${_PROJECT_ID}/hello-telus:${_SHORT_SHA}'
-
-#artifacts:
-#  objects:
-#    location: 'gs://unogwudan-test'
-#    paths: ['docker/*.tar']
 
 timeout: '1200s'
 
