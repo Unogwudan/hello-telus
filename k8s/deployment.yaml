@@ -17,25 +17,25 @@ spec:
           image: gcr.io/unogwudan-test/hello-telus:${_SHORT_SHA}
           ports:
             - containerPort: 8080
-          resources:
-            requests:
-              cpu: "2"
-              memory: "2Gi"
-            limits:
-              cpu: "4"
-              memory: "4Gi"
-          readinessProbe:
-            httpGet:
-              path: /actuator/health  # Health check endpoint
-              port: 8080
-            initialDelaySeconds: 30
-            periodSeconds: 5
-          livenessProbe:
-            httpGet:
-              path: /actuator/health  # Health check endpoint
-              port: 8080
-            initialDelaySeconds: 30
-            periodSeconds: 5
+#          resources:
+#            requests:
+#              cpu: "2"
+#              memory: "2Gi"
+#            limits:
+#              cpu: "4"
+#              memory: "4Gi"
+#          readinessProbe:
+#            httpGet:
+#              path: /actuator/health  # Health check endpoint
+#              port: 8080
+#            initialDelaySeconds: 30
+#            periodSeconds: 5
+#          livenessProbe:
+#            httpGet:
+#              path: /actuator/health  # Health check endpoint
+#              port: 8080
+#            initialDelaySeconds: 30
+#            periodSeconds: 5
           env:
             - name: GOOGLE_CLOUD_PUBSUB_CREDENTIALS
               value: /var/secrets/google/pubsub-service-account.json
@@ -62,15 +62,15 @@ spec:
   type: LoadBalancer
 
 ---
-apiVersion: autoscaling/v1
-kind: HorizontalPodAutoscaler
-metadata:
-  name: hello-telus-hpa
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: hello-telus
-  minReplicas: 1
-  maxReplicas: 2
-  targetCPUUtilizationPercentage: 50  # Target 50% CPU utilization
+#apiVersion: autoscaling/v1
+#kind: HorizontalPodAutoscaler
+#metadata:
+#  name: hello-telus-hpa
+#spec:
+#  scaleTargetRef:
+#    apiVersion: apps/v1
+#    kind: Deployment
+#    name: hello-telus
+#  minReplicas: 1
+#  maxReplicas: 2
+#  targetCPUUtilizationPercentage: 50  # Target 50% CPU utilization
