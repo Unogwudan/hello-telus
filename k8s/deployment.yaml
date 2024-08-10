@@ -24,18 +24,18 @@ spec:
 #            limits:
 #              cpu: "4"
 #              memory: "4Gi"
-#          readinessProbe:
-#            httpGet:
-#              path: /actuator/health  # Health check endpoint
-#              port: 8080
-#            initialDelaySeconds: 30
-#            periodSeconds: 5
-#          livenessProbe:
-#            httpGet:
-#              path: /actuator/health  # Health check endpoint
-#              port: 8080
-#            initialDelaySeconds: 30
-#            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /actuator/health  # Health check endpoint
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /actuator/health  # Health check endpoint
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 5
           env:
             - name: GOOGLE_CLOUD_PUBSUB_CREDENTIALS
               value: /var/secrets/google/pubsub-service-account.json
