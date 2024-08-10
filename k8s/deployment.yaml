@@ -47,7 +47,6 @@ spec:
         - name: pubsub-service-account-vol
           secret:
             secretName: pubsub-service-account
-
 ---
 apiVersion: v1
 kind: Service
