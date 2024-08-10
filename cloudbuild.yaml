@@ -12,15 +12,23 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/${_PROJECT_ID}/hello-telus:${_SHORT_SHA}']
 
+#  # Step 4: Set up kubectl to authenticate with your GKE cluster
+#  - name: 'gcr.io/cloud-builders/gcloud'
+#    entrypoint: 'sh'
+#    args:
+#      - '-c'
+#      - |
+#        gcloud config set project ${_PROJECT_ID}
+#        gcloud config set compute/region ${_CLUSTER_REGION}
+#        gcloud config set container/cluster ${_CLUSTER_NAME}
+#        gcloud container clusters get-credentials ${_CLUSTER_NAME} --region ${_CLUSTER_REGION} --project ${_PROJECT_ID}
+
   # Step 4: Set up kubectl to authenticate with your GKE cluster
   - name: 'gcr.io/cloud-builders/gcloud'
-    env:
-      - 'CLOUDSDK_COMPUTE_REGION=${_CLUSTER_REGION}'
-      - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER_NAME}'
     args:
       [
         'container', 'clusters', 'get-credentials', '${_CLUSTER_NAME}',
-        '--zone', '${_CLUSTER_REGION}', '--project', '${_PROJECT_ID}'
+        '--region', '${_CLUSTER_REGION}', '--project', '${_PROJECT_ID}'
       ]
 
   # Step 5: Apply the deployment and service configuration
