@@ -43,7 +43,7 @@ images:
 
 artifacts:
   objects:
-    location: 'gs://hello-telus-logs'
+    location: 'gs://unogwudan-test'
     paths: ['docker/*.tar']
 
 timeout: '1200s'
