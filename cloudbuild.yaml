@@ -35,7 +35,7 @@ substitutions:
   _PROJECT_ID: 'unogwudan-test'
   _CLUSTER_NAME: 'autopilot-gke-cluster'
   _CLUSTER_REGION: 'us-central1'
-  _SHORT_SHA: $(git rev-parse --short HEAD)
+  _SHORT_SHA: $SHORT_SHA
 
 images:
   - 'gcr.io/$PROJECT_ID/hello-telus:$SHORT_SHA'
