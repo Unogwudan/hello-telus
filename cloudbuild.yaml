@@ -1,17 +1,17 @@
 steps:
-  # Step 1: Clone the repository
-  - name: 'gcr.io/cloud-builders/git'
-    args: ['clone', 'https://github.com/unogwudan/hello-telus.git', '.']
+#  # Step 1: Clone the repository
+#  - name: 'gcr.io/cloud-builders/git'
+#    args: ['clone', 'https://github.com/unogwudan/hello-telus.git', '.']
 
-  # Step 2: Build the Docker image
+  # Step 1: Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/${_PROJECT_ID}/hello-telus:${_SHORT_SHA}', '.']
 
-  # Step 3: Push the Docker image to Google Container Registry
+  # Step 2: Push the Docker image to Google Container Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/${_PROJECT_ID}/hello-telus:${_SHORT_SHA}']
 
-  # Step 4: Set up kubectl to authenticate with your GKE cluster
+  # Step 3: Set up kubectl to authenticate with your GKE cluster
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       [
@@ -19,7 +19,7 @@ steps:
         '--zone', '${_CLUSTER_REGION}', '--project', '${_PROJECT_ID}'
       ]
 
-  # Step 5: Apply the deployment and service configuration
+  # Step 4: Apply the deployment and service configuration
   - name: 'gcr.io/cloud-builders/kubectl'
     args: ['apply', '-f', 'k8s/deployment.yaml']
 
