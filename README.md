@@ -5,6 +5,8 @@ This Spring Boot project integrates with Google Pub/Sub to provide messaging cap
 
 **Message Subscription:** A service is implemented to read messages from the Pub/Sub subscription and process them accordingly.
 
+**NOTE:** A test script is automatically ran upon successful deployment to publish some messages to be topic for testing.
+
 ## Key Technologies
 **Spring Boot:** Used for building and running the application.
 
