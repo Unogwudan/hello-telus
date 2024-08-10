@@ -17,6 +17,17 @@ spec:
           image: gcr.io/unogwudan-test/hello-telus:${_SHORT_SHA}
           ports:
             - containerPort: 8080
+          env:
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: /var/secrets/google/pubsub-service-account
+              volumeMounts:
+                - name: pubsub-service-account-vol
+                  mountPath: /var/secrets/google
+                  readOnly: true
+              volumes:
+                - name: gcp-service-account-vol
+                  secret:
+                    secretName: pubsub-service-account
 ---
 apiVersion: v1
 kind: Service
