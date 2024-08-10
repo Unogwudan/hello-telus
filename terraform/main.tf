@@ -27,6 +27,7 @@
 
           # Enable Autopilot Mode by using the `enable_autopilot` argument
           enable_autopilot = true
+          deletion_protection = false
 
           network    = google_compute_network.my_vpc.id
           subnetwork = google_compute_subnetwork.my_subnet.id
