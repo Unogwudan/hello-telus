@@ -52,10 +52,10 @@ substitutions:
 images:
   - 'gcr.io/${_PROJECT_ID}/hello-telus:${_SHORT_SHA}'
 
-artifacts:
-  objects:
-    location: 'gs://unogwudan-test'
-    paths: ['docker/*.tar']
+#artifacts:
+#  objects:
+#    location: 'gs://unogwudan-test'
+#    paths: ['docker/*.tar']
 
 timeout: '1200s'
 
