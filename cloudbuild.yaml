@@ -14,6 +14,9 @@ steps:
 
   # Step 4: Set up kubectl to authenticate with your GKE cluster
   - name: 'gcr.io/cloud-builders/gcloud'
+    env:
+      - 'CLOUDSDK_COMPUTE_REGION=${_CLUSTER_REGION}'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER_NAME}'
     args:
       [
         'container', 'clusters', 'get-credentials', '${_CLUSTER_NAME}',
