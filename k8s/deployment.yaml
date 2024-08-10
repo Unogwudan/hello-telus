@@ -37,7 +37,9 @@ spec:
           ports:
             - containerPort: 8080
           env:
-            - name: GOOGLE_APPLICATION_CREDENTIALS
+            - name: PUBSUB_CREDENTIALS
+              value: /var/secrets/google/pubsub-service-account.json
+            - name: GOOGLE_CLOUD_PUBSUB_CREDENTIALS
               value: /var/secrets/google/pubsub-service-account.json
           volumeMounts:
             - name: pubsub-service-account-vol
