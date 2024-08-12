@@ -24,18 +24,18 @@ spec:
 #            limits:
 #              cpu: "200m"
 #              memory: "256Mi"
-#          readinessProbe:
-#            httpGet:
-#              path: /actuator/health
-#              port: 8080
-#            initialDelaySeconds: 30
-#            periodSeconds: 5
-#          livenessProbe:
-#            httpGet:
-#              path: /actuator/health
-#              port: 8080
-#            initialDelaySeconds: 30
-#            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 5
           env:
             - name: GOOGLE_CLOUD_PUBSUB_CREDENTIALS
               value: /var/secrets/google/pubsub-service-account.json
@@ -62,15 +62,15 @@ spec:
   type: LoadBalancer
 
 ---
-#apiVersion: autoscaling/v1
-#kind: HorizontalPodAutoscaler
-#metadata:
-#  name: hello-telus-hpa
-#spec:
-#  scaleTargetRef:
-#    apiVersion: apps/v1
-#    kind: Deployment
-#    name: hello-telus
-#  minReplicas: 1
-#  maxReplicas: 2
-#  targetCPUUtilizationPercentage: 50  # Target 50% CPU utilization
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hello-telus-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: hello-telus
+  minReplicas: 1
+  maxReplicas: 2
+  targetCPUUtilizationPercentage: 50  # Target 50% CPU utilization
