@@ -11,6 +11,8 @@ public class Customer {
 
     private String firstName;
     private String lastName;
+    private String email;
+    private String address;
 
 
     @Override
@@ -18,6 +20,8 @@ public class Customer {
         return "Customer{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName=" + lastName +
+                ", email=" + email +
+                ", address=" + address +
                 '}';
     }
 }
