@@ -24,14 +24,13 @@ public class PubSubTestRunner implements CommandLineRunner {
 
         List<Customer> customers = new ArrayList<>();
 
-        // Creating 5 objects with the same payload
         customers.add(new Customer("John", "Akpa", "john.akpa@mail.com", "121 Fairview Street"));
         customers.add(new Customer("Mark", "Smith", "mark.smith@mail.com", "200 Lawrence Avenue"));
         customers.add(new Customer("Peter", "Ham", "peter.ham@mail.com", "71 old way Street"));
         customers.add(new Customer("Michael", "Boa", "michael.boa@mail.com", "8 King Street Street"));
         customers.add(new Customer("Danny", "Morgan", "danny.morgan@mail.com", "15 James Street"));
+        customers.add(new Customer("Freddy", "Mane", "freddy.mane@mail.com", "20 Lord Street"));
 
-        // Print out the list to verify
         for (Customer customer : customers) {
             System.out.println(customer);
             try {
