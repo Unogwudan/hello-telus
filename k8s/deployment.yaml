@@ -65,16 +65,16 @@ spec:
       targetPort: 8080
   type: LoadBalancer
 
-#---
-#apiVersion: autoscaling/v1
-#kind: HorizontalPodAutoscaler
-#metadata:
-#  name: hello-telus-hpa
-#spec:
-#  scaleTargetRef:
-#    apiVersion: apps/v1
-#    kind: Deployment
-#    name: hello-telus
-#  minReplicas: 1
-#  maxReplicas: 2
-#  targetCPUUtilizationPercentage: 50
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hello-telus-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: hello-telus
+  minReplicas: 1
+  maxReplicas: 2
+  targetCPUUtilizationPercentage: 50
