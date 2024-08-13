@@ -65,7 +65,7 @@ spec:
       targetPort: 8080
   type: LoadBalancer
 
----
+#---
 #apiVersion: autoscaling/v1
 #kind: HorizontalPodAutoscaler
 #metadata:
