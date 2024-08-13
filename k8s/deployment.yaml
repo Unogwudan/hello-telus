@@ -17,13 +17,13 @@ spec:
           image: gcr.io/unogwudan-test/hello-telus:${_SHORT_SHA}
           ports:
             - containerPort: 8080
-          resources:
-            requests:
-              cpu: "100m"
-              memory: "128Mi"
-            limits:
-              cpu: "200m"
-              memory: "256Mi"
+#          resources:
+#            requests:
+#              cpu: "100m"
+#              memory: "128Mi"
+#            limits:
+#              cpu: "200m"
+#              memory: "256Mi"
 #          readinessProbe:
 #            httpGet:
 #              path: /actuator/health
@@ -66,15 +66,15 @@ spec:
   type: LoadBalancer
 
 ---
-apiVersion: autoscaling/v1
-kind: HorizontalPodAutoscaler
-metadata:
-  name: hello-telus-hpa
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: hello-telus
-  minReplicas: 1
-  maxReplicas: 2
-  targetCPUUtilizationPercentage: 50
+#apiVersion: autoscaling/v1
+#kind: HorizontalPodAutoscaler
+#metadata:
+#  name: hello-telus-hpa
+#spec:
+#  scaleTargetRef:
+#    apiVersion: apps/v1
+#    kind: Deployment
+#    name: hello-telus
+#  minReplicas: 1
+#  maxReplicas: 2
+#  targetCPUUtilizationPercentage: 50
